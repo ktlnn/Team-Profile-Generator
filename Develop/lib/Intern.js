@@ -3,6 +3,9 @@ const inquirer = require("inquirer");
 const Employee = require("./Employee");
 
 class Intern extends Employee {
+    constructor(type, message, name){
+        super(type, message, name);
+    }
 
 }
 
