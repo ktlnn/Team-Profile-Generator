@@ -7,19 +7,32 @@ class Employee  {
         this.message = message;
         this.name = name;
     }
+    // constructor(name, id, email){
+    //     this.name = name;
+    //     this.id = id;
+    //     this.email = email;
+    // }
 
     validate(input){
         if(input.length < 1){
             return "Please complete input"
         } 
-        else {
+        else if (input.length) {
             return true;
         }
     }
+    
+    getRole = () => "Employee";
+    getName = () => this.name;
+    getId = () => this.id;
+    getEmail = () => this.email;
+    
 }
 
 const name = new Employee("input", "What is your full name?", "name");
 console.log(name);
+
+
 
 const id = new Employee("input", "What is your employee ID?", "id");
 console.log(id);

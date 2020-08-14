@@ -20,6 +20,9 @@ class Engineer extends Employee{
     constructor(type, message, name){
         super(type, message, name);
     }
+
+    getRole = () => "Engineer";
+    getGithub = () => this.github;
 }
 
 const github = new Engineer ("input", "What is your GitHub profile name?", "github");

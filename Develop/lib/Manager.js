@@ -9,7 +9,7 @@ class Manager extends Employee {
     
 }
 
-const number = new Manager("input", "What is your office number?", "number");
+const number = new Manager("input", "What is your office number?", "officeNumber");
 
 inquirer.prompt([number])
 .then(answers => {console.log(answers)});
