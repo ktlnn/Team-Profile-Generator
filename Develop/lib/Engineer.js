@@ -1,34 +1,19 @@
-// TODO: Write code to define and export the Engineer class.  HINT: This class should inherit from Employee.
-const inquirer = require("inquirer");
-const Employee = require("./Employee");
 
-class Engineer extends Employee{
-    // constructor(type, message, name){
-    //     this.type = type;
-    //     this.message = message;
-    //     this.name = name;
-    // }
+const Employee = require("./Employee")
 
-    // validate(input){
-    //     if(input.length < 1){
-    //         return "Please complete input"
-    //     } 
-    //     else {
-    //         return true;
-    //     }
-    // }
-    constructor(type, message, name){
-        super(type, message, name);
+class Engineer extends Employee {
+    constructor(name, id, email, github){
+        super(name, id, email);
+        this.github = github;
     }
 
-    getRole = () => "Engineer";
-    getGithub = () => this.github;
+    getRole(){
+        return "Engineer";
+    }
+
+    getGithub(){
+        return this.github;
+    }
 }
 
-const github = new Engineer ("input", "What is your GitHub profile name?", "github");
-console.log(github);
-
-inquirer.prompt([github])
-.then(answers => {console.log(answers)});
-
-module.exports= Engineer;
+module.exports = Engineer;
