@@ -143,7 +143,7 @@ let generateTeam = () => {
             case "Intern":
                 return addIntern();
 
-            case "No more employees to add":
+            case "Finish":
                 return;
         }
     })
