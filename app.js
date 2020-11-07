@@ -8,6 +8,9 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+const writeFile = require('util').promisify(fs.writeFile);
+
+
 const render = require("./lib/htmlRenderer");
 
 // const questions = [
@@ -76,11 +79,11 @@ const addEngineer = () => {
         {
             type: "number",
             message: "What is your GitHub username?",
-            name: "username"
+            name: "github"
         }
     ]).then(response => {
         console.log(response);
-        const engineer = new Engineer(response.name, response.id, response.email, response.username);
+        const engineer = new Engineer(response.name, response.id, response.email, response.github);
         team.push(engineer);
         return generateTeam();
     })
@@ -143,10 +146,16 @@ let generateTeam = () => {
             case "Intern":
                 return addIntern();
 
-            case "No more employees to add":
+            case "Finish":
                 return;
         }
     })
 }
 
-generateTeam();
+generateTeam()
+.then( () => {
+    return writeFile("./output/team.html", render(team));
+})
+.then( () => {
+    console.log("Wait yeah, team generated...");
+});
